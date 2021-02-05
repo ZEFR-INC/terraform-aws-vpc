@@ -5,7 +5,7 @@ data "aws_vpc_endpoint_service" "s3" {
 
   count = var.create_vpc && var.enable_s3_endpoint ? 1 : 0
   service = "s3"
-  id    = tolist(data.vpc_id.*.ids)[count.index]
+  id    = tolist(data.vpc_id.this.*.ids)[count.index]
 }
 
 resource "aws_vpc_endpoint" "s3" {
