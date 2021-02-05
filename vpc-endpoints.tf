@@ -4,7 +4,6 @@
 data "aws_vpc_endpoint_service" "s3" {
   count = var.create_vpc && var.enable_s3_endpoint ? 1 : 0
 
-  service_type = var.s3_endpoint_type
   service      = "s3"
 }
 
@@ -13,7 +12,6 @@ resource "aws_vpc_endpoint" "s3" {
 
   vpc_id            = local.vpc_id
   service_name      = data.aws_vpc_endpoint_service.s3[0].service_name
-  vpc_endpoint_type = var.s3_endpoint_type
 
   tags = local.vpce_tags
 }
