@@ -4,9 +4,13 @@
 data "aws_region" "current" {}
 
 data "aws_vpc_endpoint_service" "s3" {
-  count = var.create_vpc && var.enable_s3_endpoint ? 1 : 0
 
-  service_name      = "com.amazonaws.us-east-1.s3"
+  service      = "s3"
+  service_type = "Gateway"
+
+  #count = var.create_vpc && var.enable_s3_endpoint ? 1 : 0
+
+  #service_name      = "com.amazonaws.us-east-1.s3"
   #tags              = local.vpce_tags
   #service_type = var.s3_endpoint_type
 }
