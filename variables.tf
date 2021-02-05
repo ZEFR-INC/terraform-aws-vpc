@@ -1,3 +1,9 @@
+variable "s3_endpoint_type" {
+  description = "S3 VPC endpoint type"
+  type        = string
+  default     = "Gateway"
+}
+
 variable "create_vpc" {
   description = "Controls if VPC should be created (it affects almost all resources)"
   type        = bool
