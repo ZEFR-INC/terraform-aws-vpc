@@ -5,7 +5,10 @@ data "aws_vpc_endpoint_service" "s3" {
   count = var.create_vpc && var.enable_s3_endpoint ? 1 : 0
 
   service      = "s3"
-  service_type = "Gateway"
+  filter {
+    name   = "service-name"
+    values = ["com.amazonaws.${data.aws_region.current.name}.s3"]
+  }
 }
 
 resource "aws_vpc_endpoint" "s3" {
