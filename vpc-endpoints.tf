@@ -2,11 +2,12 @@
 # VPC Endpoint for S3
 ######################
 data "aws_vpc_endpoint_service" "s3" {
+
   count = var.create_vpc && var.enable_s3_endpoint ? 1 : 0
   service = "s3"
   filter {
     name  = "vpc_id"
-    values = [aws_vpc.this[count.index].id]
+    values = tolist(data.aws_vpcs.this.ids)[count.index]
   }
 }
 
