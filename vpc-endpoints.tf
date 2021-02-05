@@ -6,7 +6,7 @@ data "aws_vpc_endpoint_service" "s3" {
   service = "s3"
   filter {
     name  = "vpc_id"
-    values = [aws_vpc.this[count.index]]
+    values = aws_vpc.this[count.index].id 
   }
 }
 
