@@ -8,7 +8,8 @@ data "aws_vpc_endpoint_service" "s3" {
 
   #service      = "s3"
   #vpc_id            = local.vpc_id
-  service_name      = "com.amazonaws.${data.aws_region.current.name}.s3"
+  service_name      = "s3"
+  #"com.amazonaws.${data.aws_region.current.name}.s3"
   #vpc_endpoint_type = var.s3_vpc_endpoint_type # default = "Gateway"
   tags              = local.vpce_tags
 }
