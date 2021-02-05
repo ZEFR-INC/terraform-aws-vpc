@@ -9,7 +9,6 @@ data "aws_vpc_endpoint_service" "s3" {
   service_name      = "s3"
   tags              = local.vpce_tags
   service_type = var.s3_endpoint_type
-  service      = "s3"
 }
 
 resource "aws_vpc_endpoint" "s3" {
