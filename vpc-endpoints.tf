@@ -7,7 +7,7 @@ data "aws_vpc_endpoint_service" "s3" {
   service = "s3"
   filter {
     name  = "vpc_id"
-    values = tolist(data.aws_vpcs.this.ids)[count.index]
+    values = tolist(data.aws_vpc.this.ids)[count.index]
   }
 }
 
